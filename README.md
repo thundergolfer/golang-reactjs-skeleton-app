@@ -27,6 +27,10 @@ All code for this app (front-end, back-end, deployment) is contained in this rep
 
 #### **II. Dependencies** - Explicitly declare and isolate dependencies
 
+* Back-end dependencies are explicitly declared by `Gopkg.lock` and isolated in `vendor/`.
+* Front-end dependencies are explicitly declared in `yarn.lock` and isolated in `frontend/node_modules/`
+* The `curl` command, which is used during app build, is vendored into `vendor/` and not assumed to be present on the app's system.
+
 
 #### **III. Config** - Store config in the environment
 
