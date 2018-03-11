@@ -2,13 +2,16 @@ import React from 'react';
 import { render } from 'react-dom';
 import axios from 'axios';
 
+import urls from './urls';
+
 console.clear();
 
 const Title = ({todoCount}) => {
   return (
     <div>
        <div>
-          <h1>to-do ({todoCount})</h1>
+          <h1>12 Factor App</h1>
+          <h2>To-Do ({todoCount})</h2>
        </div>
     </div>
   );
@@ -56,7 +59,7 @@ class TodoApp extends React.Component{
     this.state = {
       data: []
     }
-    this.apiUrl = 'https://57b1924b46b57d1100a3c3f8.mockapi.io/api/todos'
+    this.apiUrl = urls.api.todos
   }
   // Lifecycle method
   componentDidMount(){
