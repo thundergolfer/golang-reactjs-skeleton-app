@@ -10,6 +10,15 @@ A basic twelve-factor app for use as a best-practices project skeleton
 
 ## Installation
 
+1. Install the back-end with [`dep`](https://github.com/golang/dep) by running `dep ensure`
+2. Install the front-end with [`yarn`](https://yarnpkg.com/lang/en/) by running `yarn`.
+
+## Running The App
+
+### Back-End
+
+`go run ./backend/*.go`
+
 ## The Twelve (XII) Factors
 
 #### **I. Codebase** - One codebase tracked in revision control, many deploys
