@@ -1,0 +1,3 @@
+FROM scratch
+ADD backend/main /
+CMD ["/main"]
