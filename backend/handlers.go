@@ -6,6 +6,7 @@ import (
 	"io"
 	"io/ioutil"
 	"net/http"
+	"path"
 	"strconv"
 	"strings"
 
@@ -53,12 +54,12 @@ func TodoIndex(w http.ResponseWriter, r *http.Request) {
 
 func TodoShow(w http.ResponseWriter, r *http.Request) {
 	vars := mux.Vars(r)
-	var todoId int
+	var todoID int
 	var err error
-	if todoId, err = strconv.Atoi(vars["todoId"]); err != nil {
+	if todoID, err = strconv.Atoi(vars["todoID"]); err != nil {
 		panic(err)
 	}
-	todo := RepoFindTodo(todoId)
+	todo := RepoFindTodo(todoID)
 	if todo.Id > 0 {
 		w.Header().Set("Content-Type", "application/json; charset=UTF-8")
 		w.WriteHeader(http.StatusOK)
@@ -104,4 +105,24 @@ func TodoCreate(w http.ResponseWriter, r *http.Request) {
 	if err := json.NewEncoder(w).Encode(t); err != nil {
 		panic(err)
 	}
+}
+
+func TodoDelete(w http.ResponseWriter, r *http.Request) {
+	pth := path.Base(r.URL.Path)
+
+	todoID, err := strconv.Atoi(pth)
+	if err != nil {
+		log.Warn(err)
+		w.WriteHeader(http.StatusBadRequest)
+		return
+	}
+
+	err = RepoDestroyTodo(todoID)
+	if err != nil {
+		log.Error(err)
+		w.WriteHeader(http.StatusInternalServerError)
+		return
+	}
+
+	w.WriteHeader(http.StatusNoContent)
 }
