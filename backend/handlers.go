@@ -14,7 +14,8 @@ import (
 )
 
 func Index(w http.ResponseWriter, r *http.Request) {
-	if bs, err := Asset("index.html"); err != nil {
+	if bs, err := Asset("public/index.html"); err != nil {
+		log.Println(err)
 		w.WriteHeader(http.StatusNotFound)
 	} else {
 		var reader = bytes.NewBuffer(bs)
