@@ -6,14 +6,17 @@ import (
 	"github.com/gorilla/mux"
 )
 
-func NewRouter() *mux.Router {
-
-	router := mux.NewRouter()
-
+func setupStatic(router *mux.Router) {
 	var poopHandler http.HandlerFunc
 	poopHandler = StaticHandler
-	router.PathPrefix("/public/").Handler(poopHandler)
-	router.PathPrefix("/static/").Handler(poopHandler)
+	router.PathPrefix("/public/").Handler(Logger(poopHandler, "/public/"))
+	router.PathPrefix("/static/").Handler(Logger(poopHandler, "/static/"))
+}
+
+func NewRouter() *mux.Router {
+	router := mux.NewRouter()
+
+	setupStatic(router)
 
 	for _, route := range routes {
 		var handler http.Handler

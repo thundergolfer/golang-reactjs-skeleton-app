@@ -5,17 +5,18 @@ import (
 	"encoding/json"
 	"io"
 	"io/ioutil"
-	"log"
 	"net/http"
 	"strconv"
 	"strings"
+
+	log "github.com/sirupsen/logrus"
 
 	"github.com/gorilla/mux"
 )
 
 func Index(w http.ResponseWriter, r *http.Request) {
 	if bs, err := Asset("public/index.html"); err != nil {
-		log.Println(err)
+		log.Error(err)
 		w.WriteHeader(http.StatusNotFound)
 	} else {
 		var reader = bytes.NewBuffer(bs)
@@ -34,8 +35,8 @@ func StaticHandler(w http.ResponseWriter, r *http.Request) {
 
 	log.Println(AssetDir("public"))
 	if bs, err := Asset(path); err != nil {
-		log.Println(err)
-		w.Write([]byte("hello fuck"))
+		log.Warn(err)
+		w.WriteHeader(http.StatusNotFound)
 	} else {
 		var reader = bytes.NewBuffer(bs)
 		io.Copy(w, reader)

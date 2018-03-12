@@ -13,9 +13,36 @@
   revision = "53c1911da2b537f792e7cafcb446b05ffe33b996"
   version = "v1.6.1"
 
+[[projects]]
+  name = "github.com/jteeuwen/go-bindata"
+  packages = ["."]
+  revision = "bbd0c6e271208dce66d8fda4bc536453cd27fc4a"
+  version = "v3.0.7"
+
+[[projects]]
+  name = "github.com/sirupsen/logrus"
+  packages = ["."]
+  revision = "c155da19408a8799da419ed3eeb0cb5db0ad5dbc"
+  version = "v1.0.5"
+
+[[projects]]
+  branch = "master"
+  name = "golang.org/x/crypto"
+  packages = ["ssh/terminal"]
+  revision = "c7dcf104e3a7a1417abc0230cb0d5240d764159d"
+
+[[projects]]
+  branch = "master"
+  name = "golang.org/x/sys"
+  packages = [
+    "unix",
+    "windows"
+  ]
+  revision = "c28acc882ebcbfbe8ce9f0f14b9ac26ee138dd51"
+
 [solve-meta]
   analyzer-name = "dep"
   analyzer-version = 1
-  inputs-digest = "9f2ff4af4f38c466297eb5c258a8ec9d28409a8cea92f61cb7562f91eaa3448a"
+  inputs-digest = "e881b00d9d1656e5f046b0e80ef240cd6996537cf31a55cf2608f37da1405e5d"
   solver-name = "gps-cdcl"
   solver-version = 1
