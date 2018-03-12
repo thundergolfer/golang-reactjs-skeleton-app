@@ -32,3 +32,11 @@
 [prune]
   go-tests = true
   unused-packages = true
+
+[[constraint]]
+  name = "github.com/elazarl/go-bindata-assetfs"
+  version = "1.0.0"
+
+[[constraint]]
+  name = "github.com/jteeuwen/go-bindata"
+  version = "3.0.7"

@@ -6,6 +6,9 @@ import urls from './urls';
 
 console.clear();
 
+console.log(process.env.API_ROOT);
+console.log(urls.api.todos);
+
 const Title = ({todoCount}) => {
   return (
     <div>
@@ -67,7 +70,9 @@ class TodoApp extends React.Component{
     axios.get(this.apiUrl)
       .then((res) => {
         // Set state with result
-        this.setState({data:res.data});
+        this.setState({
+          data: res.data
+        });
       });
   }
   // Add todo handler

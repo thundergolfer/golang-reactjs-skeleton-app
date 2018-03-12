@@ -1,3 +1,6 @@
 vendor/github.com/
 
 frontend/node_modules/
+frontend/yarn-error.log
+
+backend/bindata.go

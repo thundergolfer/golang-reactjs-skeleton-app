@@ -8,7 +8,13 @@ import (
 
 func NewRouter() *mux.Router {
 
-	router := mux.NewRouter().StrictSlash(true)
+	router := mux.NewRouter()
+
+	var poopHandler http.HandlerFunc
+	poopHandler = StaticHandler
+	router.PathPrefix("/public/").Handler(poopHandler)
+	router.PathPrefix("/static/").Handler(poopHandler)
+
 	for _, route := range routes {
 		var handler http.Handler
 

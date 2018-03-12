@@ -1,18 +1,39 @@
 package main
 
 import (
+	"bytes"
 	"encoding/json"
-	"fmt"
 	"io"
 	"io/ioutil"
+	"log"
 	"net/http"
 	"strconv"
+	"strings"
 
 	"github.com/gorilla/mux"
 )
 
 func Index(w http.ResponseWriter, r *http.Request) {
-	fmt.Fprint(w, "Welcome!\n")
+	http.ServeFile(w, r, "frontend/public/index.html")
+}
+
+func StaticHandler(rw http.ResponseWriter, req *http.Request) {
+	path := req.URL.Path[1:] // strip leading slash
+	if path == "" {
+		path = "index.html"
+	}
+	if !strings.HasPrefix(path, "public") {
+		path = "public/" + path
+	}
+
+	log.Println(AssetDir("public"))
+	if bs, err := Asset(path); err != nil {
+		log.Println(err)
+		rw.Write([]byte("hello fuck"))
+	} else {
+		var reader = bytes.NewBuffer(bs)
+		io.Copy(rw, reader)
+	}
 }
 
 func TodoIndex(w http.ResponseWriter, r *http.Request) {
