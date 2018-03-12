@@ -14,8 +14,6 @@ import (
 )
 
 func Index(w http.ResponseWriter, r *http.Request) {
-	http.ServeFile(w, r, "frontend/public/index.html")
-
 	if bs, err := Asset("index.html"); err != nil {
 		w.WriteHeader(http.StatusNotFound)
 	} else {

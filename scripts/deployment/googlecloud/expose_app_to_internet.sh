@@ -3,4 +3,8 @@ source $DIR/../../.deployment_env_vars
 
 PORT="8080"
 
-kubectl run ${DEPLOYMENT_NAME} --image=gcr.io/${PROJECT_ID}/${IMAGE_NAME}:v${TAG} --port $PORT
+kubectl expose deployment ${DEPLOYMENT_NAME} --type=LoadBalancer --port 80 --target-port $PORT
+
+echo "Deployment IP details: "
+echo "-----------------------"
+kubectl get service
