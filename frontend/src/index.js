@@ -13,7 +13,7 @@ const Title = ({todoCount}) => {
   return (
     <div>
        <div>
-          <h1>12 Factor App</h1>
+          <h1><b>12 Factor App</b></h1>
           <h2>To-Do ({todoCount})</h2>
        </div>
     </div>
