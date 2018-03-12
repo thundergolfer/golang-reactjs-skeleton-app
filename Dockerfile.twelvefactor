@@ -1,3 +1,6 @@
 FROM scratch
+
+# The golang binary is pre-compiled (including front-end assets) and just
+# inserted into the empty (from "scratch") container. Saves a lot of space.
 ADD backend/main /
 CMD ["/main"]
