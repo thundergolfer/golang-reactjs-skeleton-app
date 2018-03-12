@@ -15,10 +15,17 @@ import (
 
 func Index(w http.ResponseWriter, r *http.Request) {
 	http.ServeFile(w, r, "frontend/public/index.html")
+
+	if bs, err := Asset("index.html"); err != nil {
+		w.WriteHeader(http.StatusNotFound)
+	} else {
+		var reader = bytes.NewBuffer(bs)
+		io.Copy(w, reader)
+	}
 }
 
-func StaticHandler(rw http.ResponseWriter, req *http.Request) {
-	path := req.URL.Path[1:] // strip leading slash
+func StaticHandler(w http.ResponseWriter, r *http.Request) {
+	path := r.URL.Path[1:] // strip leading slash
 	if path == "" {
 		path = "index.html"
 	}
@@ -29,10 +36,10 @@ func StaticHandler(rw http.ResponseWriter, req *http.Request) {
 	log.Println(AssetDir("public"))
 	if bs, err := Asset(path); err != nil {
 		log.Println(err)
-		rw.Write([]byte("hello fuck"))
+		w.Write([]byte("hello fuck"))
 	} else {
 		var reader = bytes.NewBuffer(bs)
-		io.Copy(rw, reader)
+		io.Copy(w, reader)
 	}
 }
 
