@@ -1,0 +1,4 @@
+export SERVICE_ACC_NAME="twelve-factor-app-service-acc"
+export GOOGLE_APPLICATION_CREDENTIALS="gcloud_storage_keyfile.json"
+export GOOGLE_CLOUD_BUCKET_NAME="twelve-factor-todos"
+export DATASTORE="googlecloudstorage"
