@@ -19,6 +19,12 @@ A basic twelve-factor app for use as a best-practices project skeleton
 
 `go run ./backend/*.go`
 
+### Front-end
+
+1. `cd frontend/`
+
+2. `yarn run start`
+
 ## The Twelve (XII) Factors
 
 #### **I. Codebase** - One codebase tracked in revision control, many deploys
