@@ -16,9 +16,7 @@ const Title = ({todoCount}) => {
 }
 
 const TodoForm = ({addTodo}) => {
-  // Input Tracker
   let input;
-  // Return JSX
   return (
     <form onSubmit={(e) => {
         e.preventDefault();
@@ -34,12 +32,10 @@ const TodoForm = ({addTodo}) => {
 };
 
 const Todo = ({todo, remove}) => {
-  // Each Todo
   return (<a href="#" className="list-group-item" onClick={() => {remove(todo.id)}}>{todo.text}</a>);
 }
 
 const TodoList = ({todos, remove}) => {
-  // Map through the todos
   const todoNode = todos.map((todo) => {
     return (<Todo todo={todo} key={todo.id} remove={remove}/>)
   });
@@ -59,31 +55,26 @@ class TodoApp extends React.Component{
     }
     this.apiUrl = urls.api.todos
   }
-  // Lifecycle method
+
   componentDidMount(){
-    // Make HTTP reques with Axios
     axios.get(this.apiUrl)
       .then((res) => {
-        // Set state with result
         this.setState({
           data: res.data
         });
       });
   }
-  // Add todo handler
+
   addTodo(val){
-    // Assemble data
     const todo = {text: val}
-    // Update data
     axios.post(this.apiUrl, todo)
        .then((res) => {
           this.state.data.push(res.data);
           this.setState({data: this.state.data});
        });
   }
-  // Handle remove
+
   handleRemove(id){
-    // Filter all todos except the one to be removed
     const remainder = this.state.data.filter((todo) => {
       if(todo.id !== id) return todo;
     });
@@ -95,7 +86,6 @@ class TodoApp extends React.Component{
   }
 
   render(){
-    // Render JSX
     return (
       <div>
         <Title todoCount={this.state.data.length}/>
