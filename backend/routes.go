@@ -11,35 +11,39 @@ type Route struct {
 
 type Routes []Route
 
-var routes = Routes{
-	Route{
-		"Index",
-		"GET",
-		"/",
-		Index,
-	},
-	Route{
-		"TodoIndex",
-		"GET",
-		"/api/todos",
-		TodoIndex,
-	},
-	Route{
-		"TodoCreate",
-		"POST",
-		"/api/todos",
-		TodoCreate,
-	},
-	Route{
-		"TodoShow",
-		"GET",
-		"/api/todos/{todoId}",
-		TodoShow,
-	},
-	Route{
-		"TodoDelete",
-		"DELETE",
-		"/api/todos/{todoId}",
-		TodoDelete,
-	},
+func routes(app *App) Routes {
+	var routes = Routes{
+		Route{
+			"Index",
+			"GET",
+			"/",
+			app.Index,
+		},
+		Route{
+			"TodoIndex",
+			"GET",
+			"/api/todos",
+			app.TodoIndex,
+		},
+		Route{
+			"TodoCreate",
+			"POST",
+			"/api/todos",
+			app.TodoCreate,
+		},
+		Route{
+			"TodoShow",
+			"GET",
+			"/api/todos/{todoId}",
+			app.TodoShow,
+		},
+		Route{
+			"TodoDelete",
+			"DELETE",
+			"/api/todos/{todoId}",
+			app.TodoDelete,
+		},
+	}
+
+	return routes
 }

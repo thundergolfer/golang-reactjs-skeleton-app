@@ -5,4 +5,6 @@ frontend/yarn-error.log
 
 backend/bindata.go
 # ignore backend golang binary
-backend/main 
+backend/main
+
+gcloud_storage_keyfile.json

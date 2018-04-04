@@ -40,29 +40,42 @@ All code for this app (front-end, back-end, deployment) is contained in this rep
 
 #### **III. Config** - Store config in the environment
 
+As stipulated, all configuration that varies between deployments of the app is picked up by the app from the environment. See: `backend/config.go`.
 
 #### **IV. Backing services** - Treat backing services as attached resources
 
 
 #### **V. Build, release, run** - Strictly separate build and run stages
 
+The build stage is strictly separated into the building of a single Docker image, done with `scripts/build_docker_image.sh`.
+
+**TODO:** Think about how config get packaged into releases
+
 
 #### **VI. Processes** - Execute the app as one or more stateless processes
 
+The back-end web app operates statelessly if any datastore but the `InMemoryStorer` is used. State is kept in an attached datastore resource, like the `GoogleCloudStorer`.
 
 #### **VII. Port binding** - Export services via port binding
 
+Our back-end web server exposes itself on port `8080`.
 
 #### **VIII. Concurrency** - Scale out via the process model
 
+This example app currently only has 1 *process-type*, the web-server, but that process-type can be instantiated into many processes for horizontal scale. **NOTE:** What about race conditions?
 
 #### **IX. Disposability** - Maximize robustness with fast startup and graceful shutdown
 
+This is a minimal toy example app, so it's going to startup quickly and without fuss. It will also shutdown cleanly, calling no mandatory 'cleanup' tasks that could fail in a crash scenario.
 
 #### **X. Dev/prod parity** - Keep development, staging, and production as similar as possible
 
+[*Google Cloud Datastore Emulator*](https://cloud.google.com/datastore/docs/tools/datastore-emulator) and [*Minio*](https://github.com/minio/minio) allow for local development with production-like backing services. *Docker* facilitates OS-level virtualisation both locally and in production (ie. in Google Cloud, AWS).
 
 #### **XI. Logs** - Treat logs as event streams
 
+Fulfilled, as application logs are dumped out to `stdout` with no concern for storage or routing, and they have nice structure granted by the [logrus](https://github.com/sirupsen/logrus) library.
 
 #### **XII. Admin processes** - Run admin/management tasks as one-off processes
+
+One-time maintenance scripts are committed in the repo in `scripts/` alongside regular application code. The back-end is in `golang` though, so we don't get the REPL the *12 Factor Methodology* strongly encourages.
