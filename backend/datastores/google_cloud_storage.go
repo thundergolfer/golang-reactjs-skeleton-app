@@ -10,7 +10,7 @@ import (
 
 	"cloud.google.com/go/storage"
 	"github.com/satori/go.uuid"
-	"github.com/thundergolfer/golang-react-skeleton-app/backend/types"
+	"github.com/thundergolfer/golang-reactjs-skeleton-app/backend/types"
 	"golang.org/x/net/context"
 )
 
