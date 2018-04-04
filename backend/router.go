@@ -7,10 +7,10 @@ import (
 )
 
 func setupStatic(router *mux.Router) {
-	var poopHandler http.HandlerFunc
-	poopHandler = StaticHandler
-	router.PathPrefix("/public/").Handler(Logger(poopHandler, "/public/"))
-	router.PathPrefix("/static/").Handler(Logger(poopHandler, "/static/"))
+	var handler http.HandlerFunc
+	handler = StaticHandler
+	router.PathPrefix("/public/").Handler(Logger(handler, "/public/"))
+	router.PathPrefix("/static/").Handler(Logger(handler, "/static/"))
 }
 
 func NewRouter() *mux.Router {

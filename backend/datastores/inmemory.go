@@ -4,7 +4,7 @@ import (
 	"fmt"
 
 	"github.com/satori/go.uuid"
-	"github.com/thundergolfer/12-factor/backend/types"
+	"github.com/thundergolfer/golang-reactjs-skeleton-app/backend/types"
 )
 
 type InMemoryStorer struct {

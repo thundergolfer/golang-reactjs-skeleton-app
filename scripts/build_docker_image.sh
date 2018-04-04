@@ -19,4 +19,4 @@ cd $DIR/..
 docker build -t gcr.io/${PROJECT_ID}/${IMAGE_NAME}:v${TAG} -f Dockerfile.twelvefactor .
 
 # You can run the docker image locally with:
-# `docker run -itp 8080:8080 thundergolfer/12-factor:latest`
+# `docker run -itp 8080:8080 thundergolfer/golang-reactjs-skeleton-app:latest`

@@ -1,5 +1,5 @@
 {
-  "name": "12-factor-app-frontend",
+  "name": "golang-reactjs-skeleton-app-frontend",
   "version": "1.0.0",
   "description": "12 Factor App - Frontend",
   "main": "index.js",

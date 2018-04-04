@@ -1,7 +1,7 @@
 package datastores
 
 import (
-	"github.com/thundergolfer/12-factor/backend/types"
+	"github.com/thundergolfer/golang-reactjs-skeleton-app/backend/types"
 )
 
 type Datastore interface {

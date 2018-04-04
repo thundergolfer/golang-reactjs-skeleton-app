@@ -14,8 +14,8 @@ import (
 	log "github.com/sirupsen/logrus"
 
 	"github.com/gorilla/mux"
-	"github.com/thundergolfer/12-factor/backend/datastores"
-	"github.com/thundergolfer/12-factor/backend/types"
+	"github.com/thundergolfer/golang-reactjs-skeleton-app/backend/datastores"
+	"github.com/thundergolfer/golang-reactjs-skeleton-app/backend/types"
 )
 
 func newApp(c config) *App {
