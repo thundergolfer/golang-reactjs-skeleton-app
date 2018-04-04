@@ -4,16 +4,11 @@ import axios from 'axios';
 
 import urls from './urls';
 
-console.clear();
-
-console.log(process.env.API_ROOT);
-console.log(urls.api.todos);
-
 const Title = ({todoCount}) => {
   return (
     <div>
        <div>
-          <h1><b>12 Factor App</b></h1>
+          <h1><b>Golang + ReactJS Skeleton App</b></h1>
           <h2>To-Do ({todoCount})</h2>
        </div>
     </div>
