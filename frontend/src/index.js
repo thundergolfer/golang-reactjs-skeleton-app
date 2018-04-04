@@ -51,7 +51,7 @@ const TodoList = ({todos, remove}) => {
   return (<div className="list-group" style={{marginTop:'30px'}}>{todoNode}</div>);
 }
 
-// Contaner Component
+// Container Component
 // Todo Id
 window.id = 0;
 class TodoApp extends React.Component{
