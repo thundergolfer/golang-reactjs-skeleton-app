@@ -1,5 +1,11 @@
+<p align="center">
+  ⚠️ ⚠️ ⚠️ <br/> <strong>This app was made in 2018 to learn more about Golang, React, and the 12-Factor methodology. It is not production-standard code.</strong> <br/>⚠️ ⚠️ ⚠️
+</p>
+
+-----
+
 # 12 Factor (App)
-A basic twelve-factor app for use as a best-practices project skeleton
+A basic twelve-factor app for use as project skeleton
 
 -----
 
@@ -25,7 +31,7 @@ A basic twelve-factor app for use as a best-practices project skeleton
 
 2. `yarn run start`
 
-## The Twelve (XII) Factors
+## The Twelve (XII) Factors Checklist
 
 #### **I. Codebase** - One codebase tracked in revision control, many deploys
 
